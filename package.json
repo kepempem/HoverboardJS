@@ -1,0 +1,25 @@
+{
+  "name": "hover-board",
+  "version": "0.0.1",
+  "description": "Tiny web application framework for single page applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kepempem/HoverboardJS.git"
+  },
+  "keywords": [
+    "web",
+    "applications",
+    "web-applications",
+    "AJAX"
+  ],
+  "author": "Shani Dahan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kepempem/HoverboardJS/issues"
+  },
+  "homepage": "https://github.com/kepempem/HoverboardJS#readme"
+}

@@ -139,7 +139,7 @@ module.exports     = class {
 				if(_url!=="/"){
 					_url = _url.slice(1);
 				}
-				this.request(_url,req.method.toUpperCase(),request_data,req.headers,protocol,req.url).then(results=>{
+				this.request(_url,req.method.toUpperCase(),request_data,req.headers,protocol,req.url,body).then(results=>{
 					res.writeHead(results.Status,results.Message,results.Headers);
 					if(results.Body.length>0){
 						res.end(results.Body,results.Encoding);

@@ -42,9 +42,6 @@ module.exports = class {
 		]);
 	}
 	Header   (h,v){
-		if(h=="*"){
-			return this.rd.Headers;
-		}
 		if(typeof h=="string"){
 			if(typeof v=="string"||(typeof v=="object"&&Array.isArray(v))){
 				this._Headers[h] = v;
@@ -160,6 +157,9 @@ module.exports = class {
 	get Parameters(){
 		return this.rd.Parameters;
 	}
+	get Headers(){
+		return this.rd.Headers;
+	}
 	get URL(){
 		return this.rd.URL;
 	}
@@ -171,5 +171,8 @@ module.exports = class {
 	}
 	get Raw(){
 		return this.rd.Raw;
+	}
+	get Method(){
+		return this.rd.Method;
 	}
 };

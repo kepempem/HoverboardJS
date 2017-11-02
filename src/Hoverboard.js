@@ -94,7 +94,7 @@ module.exports     = class {
 		}
 		return false;
 	}
-	request(path,method,data,headers,protocol,full_path,raw){
+	request(path,method,data,headers,protocol,full_path,raw,rqst){
 		return new Promise((resolve,reject)=>{
 			let pu = url.parse(path,true);
 			let cont_inq = this.getController(pu.pathname);
@@ -117,7 +117,8 @@ module.exports     = class {
 				URL:protocol+"://"+host+full_path,
 				Cookies:Object.assign({},cookies),
 				Base:this.__BASE__,
-				Raw:raw
+				Raw:raw,
+				Request:rqst
 			},resolve);
 			let pupaac = ActualPath(pu.pathname);
 			if(this._index!==null&&pupaac=="/"||this._indexRoutes.indexOf(pupaac)>-1||this._indexRoutes.map(r=>typeof r=="object"&&r.test(pupaac)).indexOf(true)>-1){
@@ -139,7 +140,7 @@ module.exports     = class {
 				if(_url!=="/"){
 					_url = _url.slice(1);
 				}
-				this.request(_url,req.method.toUpperCase(),request_data,req.headers,protocol,req.url,body).then(results=>{
+				this.request(_url,req.method.toUpperCase(),request_data,req.headers,protocol,req.url,body,req).then(results=>{
 					res.writeHead(results.Status,results.Message,results.Headers);
 					if(results.Body.length>0){
 						res.end(results.Body,results.Encoding);

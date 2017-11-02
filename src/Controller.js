@@ -19,7 +19,11 @@ module.exports = class {
 		this._Body = "";
 	}
 	End(...ess){
-		this.Write(...ess);
+		let tin = ess;
+		if(typeof tin[0]=="object"){
+			tin = [JSON.stringify(tin[0])];
+		}
+		this.Write(...tin);
 		this._Headers["Set-Cookie"] = this._Cookies.map(c=>CookieChef.cook(c));
 		if(!this._Headers.hasOwnProperty("Content-Type")){
 			this.Header("Content-Type","text/html");
@@ -151,6 +155,9 @@ module.exports = class {
 		}
 		return null;
 	}
+	get Method(){
+		return this.rd.Method;
+	}
 	get Fields(){
 		return this.rd.Data;
 	}
@@ -172,7 +179,7 @@ module.exports = class {
 	get Raw(){
 		return this.rd.Raw;
 	}
-	get Method(){
-		return this.rd.Method;
+	get Vanilla(){
+		return this.rd.Request;
 	}
 };

@@ -179,7 +179,7 @@ module.exports     = class {
 			}
 			let fst = fs.statSync(fupatofo);
 			if(fst.isDirectory()){
-				this.endpoint(new RegExp(n+"(\\\/.*)?"),c=>{
+				this.endpoint(new RegExp("^"+n+"(\\\/.*)?"),c=>{
 					let supa = __PATH__.join(fupatofo,c.Path.slice(n.length));
 					if(fs.existsSync(supa)){
 						c.Serve(supa,true);
